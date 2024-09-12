@@ -3,6 +3,8 @@
 
 import {useTheme} from "next-themes";
 import { useEffect, useState } from "react";
+import { SunMoon, Moon } from 'lucide-react';
+import { Button } from "@nextui-org/react";
 
 export function ThemeSwitcher() {
   const [mounted, setMounted] = useState(false)
@@ -16,9 +18,11 @@ export function ThemeSwitcher() {
 
   return (
     <div>
-      The current theme is: {theme}
-      <button onClick={() => setTheme('light')}>Light Mode</button>
-      <button onClick={() => setTheme('dark')}>Dark Mode</button>
+      <Button isIconOnly color="warning" variant="faded" aria-label="Theme" onClick={() => {
+        setTheme(theme === "dark" ? "light" : "dark")
+      }}>
+        {theme === "dark" ? <SunMoon size={30}/> : <Moon  size={30}/>}
+      </Button>
     </div>
   )
 };
